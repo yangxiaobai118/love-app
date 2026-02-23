@@ -3,6 +3,7 @@
   "builds": [
     {
       "src": "main.py",
+      "buildCommand": "npm run vercel-build",
       "use": "@vercel/python"
     }
   ],
@@ -22,4 +23,5 @@
     "WECHAT_APPID": "${WECHAT_APPID}",
     "WECHAT_SECRET": "${WECHAT_SECRET}"
   }
+
 }
