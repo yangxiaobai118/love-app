@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="banner">
+    <text class="banner-title">欢迎来到相亲征婚交友</text>
+    <text class="banner-subtitle">找到你的另一半</text>
+  </view>
+  
+  <view class="quick-actions">
+    <view class="action-item" bindtap="goToSearch">
+      <text class="action-icon">🔍</text>
+      <text class="action-text">搜索用户</text>
+    </view>
+    <view class="action-item" bindtap="goToFriends">
+      <text class="action-icon">👥</text>
+      <text class="action-text">好友列表</text>
+    </view>
+    <view class="action-item" bindtap="goToRecharge">
+      <text class="action-icon">💰</text>
+      <text class="action-text">充值</text>
+    </view>
+    <view class="action-item" bindtap="goToProfile">
+      <text class="action-icon">👤</text>
+      <text class="action-text">个人中心</text>
+    </view>
+  </view>
+  
+  <view class="recommendations">
+    <view class="section-header">
+      <text class="section-title">推荐用户</text>
+    </view>
+    
+    <scroll-view class="recommendation-list" scroll-x="true">
+      <block wx:for="{{recommendedUsers}}" wx:key="id">
+        <view class="recommendation-item" bindtap="goToUserDetail" data-user-id="{{item.id}}">
+          <image src="{{item.avatar || '/images/default-avatar.png'}}" class="user-avatar"></image>
+          <text class="user-nickname">{{item.nickname}}</text>
+          <text class="user-gender">{{item.gender}}</text>
+          <text class="user-age" wx:if="{{item.age}}">{{item.age}}岁</text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  
+  <view class="tips">
+    <text class="tips-title">使用提示</text>
+    <text class="tips-content">• 聊天可以增加好感度</text>
+    <text class="tips-content">• 好感度达到一定程度可以公开自己的信息</text>
+    <text class="tips-content">• 每日观看广告可以获得额外好感度</text>
+    <text class="tips-content">• 可以通过充值购买心心，送给好友增加好感度</text>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="chat-header">
+    <text class="chat-title">{{friendInfo.nickname}}</text>
+    <text class="chat-gender">{{friendInfo.gender}}</text>
+  </view>
+  
+  <scroll-view class="chat-content" scroll-y="true" bindscrolltolower="loadMoreMessages">
+    <block wx:for="{{messages}}" wx:key="id">
+      <view class="message-item" wx:if="{{item.sender_id == userInfo.id}}">
+        <view class="message-right">
+          <text class="message-text">{{item.content}}</text>
+          <text class="message-time">{{formatTime(item.created_at)}}</text>
+        </view>
+      </view>
+      <view class="message-item" wx:else>
+        <view class="message-left">
+          <text class="message-text">{{item.content}}</text>
+          <text class="message-time">{{formatTime(item.created_at)}}</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  
+  <view class="chat-input">
+    <input type="text" placeholder="请输入消息" bindinput="bindMessageInput" value="{{inputValue}}" class="input"></input>
+    <button bindtap="sendMessage" class="send-btn">
+      <text>发送</text>
+    </button>
+  </view>
+  
+  <view class="affection-bar">
+    <text class="affection-label">好感度：</text>
+    <text class="affection-value">{{affection}}</text>
+  </view>
+</view>

@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="friends-list">
+    <block wx:for="{{friends}}" wx:key="id">
+      <view class="friend-item" bindtap="goToChat" data-friend-id="{{item.id}}">
+        <image src="{{item.avatar || '/images/default-avatar.png'}}" class="friend-avatar"></image>
+        <view class="friend-info">
+          <view class="friend-header">
+            <text class="friend-nickname">{{item.nickname}}</text>
+            <text class="friend-gender">{{item.gender}}</text>
+          </view>
+          <view class="friend-footer">
+            <view class="affection">
+              <text class="affection-label">好感度：</text>
+              <text class="affection-value">{{item.affection}}</text>
+            </view>
+            <view wx:if="{{!item.is_info_public}}" class="info-status">
+              <text class="info-status-text">信息未公开</text>
+            </view>
+            <view wx:else class="info-status">
+              <text class="info-status-text info-public">信息已公开</text>
+            </view>
+          </view>
+        </view>
+        <view class="friend-actions">
+          <button bindtap="publicInfo" data-friend-id="{{item.id}}" class="public-btn">
+            <text>公开信息</text>
+          </button>
+        </view>
+      </view>
+    </block>
+    
+    <view wx:if="{{friends.length === 0}}" class="empty-state">
+      <image src="/images/empty-friends.png" class="empty-image"></image>
+      <text class="empty-text">还没有好友，去搜索添加吧</text>
+      <navigator url="/pages/search/search" class="search-btn">
+        <text>去搜索</text>
+      </navigator>
+    </view>
+  </view>
+</view>

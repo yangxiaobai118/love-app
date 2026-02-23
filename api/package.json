@@ -1,0 +1,21 @@
+{
+  "name": "dating-app-api",
+  "version": "1.0.0",
+  "description": "相亲征婚交友微信小程序后端API",
+  "main": "main.py",
+  "scripts": {
+    "start": "python main.py",
+    "dev": "uvicorn main:app --reload"
+  },
+  "dependencies": {
+    "fastapi": "^0.104.1",
+    "uvicorn": "^0.24.0",
+    "pydantic": "^2.5.0",
+    "pydantic-settings": "^2.1.0",
+    "supabase": "^2.38.0",
+    "python-jose": "^3.3.0",
+    "passlib": "^1.7.4",
+    "python-multipart": "^0.0.6",
+    "aiosmtplib": "^3.0.0"
+  }
+}

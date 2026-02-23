@@ -1,0 +1,64 @@
+<view class="container">
+  <view class="search-form">
+    <view class="form-item">
+      <text class="label">性别</text>
+      <radio-group bindchange="bindGenderChange">
+        <radio value="" class="radio"></radio>
+        <text class="radio-label">不限</text>
+        <radio value="男" class="radio"></radio>
+        <text class="radio-label">男</text>
+        <radio value="女" class="radio"></radio>
+        <text class="radio-label">女</text>
+      </radio-group>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">年龄范围</text>
+      <view class="age-range">
+        <input type="number" placeholder="最小" bindinput="bindAgeMinInput" class="age-input"></input>
+        <text class="age-separator">-</text>
+        <input type="number" placeholder="最大" bindinput="bindAgeMaxInput" class="age-input"></input>
+      </view>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">所在省份</text>
+      <input type="text" placeholder="请输入省份" bindinput="bindProvinceInput" class="input"></input>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">城市</text>
+      <input type="text" placeholder="请输入城市" bindinput="bindCityInput" class="input"></input>
+    </view>
+    
+    <button bindtap="searchUsers" class="search-btn">
+      <text>搜索</text>
+    </button>
+  </view>
+  
+  <view class="search-results">
+    <block wx:for="{{users}}" wx:key="id">
+      <view class="user-item">
+        <image src="{{item.avatar || '/images/default-avatar.png'}}" class="user-avatar"></image>
+        <view class="user-info">
+          <view class="user-header">
+            <text class="user-nickname">{{item.nickname}}</text>
+            <text class="user-gender">{{item.gender}}</text>
+          </view>
+          <view class="user-detail">
+            <text class="user-age" wx:if="{{item.age}}">{{item.age}}岁</text>
+            <text class="user-location" wx:if="{{item.province && item.city}}">{{item.province}} {{item.city}}</text>
+          </view>
+        </view>
+        <button bindtap="addFriend" data-user-id="{{item.id}}" class="add-btn">
+          <text>添加好友</text>
+        </button>
+      </view>
+    </block>
+    
+    <view wx:if="{{users.length === 0 && hasSearched}}" class="empty-state">
+      <image src="/images/empty-search.png" class="empty-image"></image>
+      <text class="empty-text">未找到符合条件的用户</text>
+    </view>
+  </view>
+</view>
