@@ -2,9 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "main.py",
-      "buildCommand": "npm run vercel-build",
-      "use": "@vercel/python"
+      "src": "main.py",  // 你的 FastAPI 入口文件路径
+      "use": "@vercel/python@latest",  // Vercel Python 运行时
+      "config": {
+        "maxLambdaSize": "15mb",  // 按需调整，适配依赖大小
+        "runtime": "python3.12"   // 指定 Python 版本（和本地一致）
+      }
     }
   ],
   "routes": [
@@ -25,3 +28,4 @@
   }
 
 }
+
