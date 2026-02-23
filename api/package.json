@@ -5,6 +5,7 @@
   "main": "main.py",
   "scripts": {
     "start": "python main.py",
+    "vercel-build": "curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH=\"$HOME/.cargo/bin:$PATH\" && uv lock",
     "dev": "uvicorn main:app --reload"
   },
   "dependencies": {
@@ -18,4 +19,5 @@
     "python-multipart": "^0.0.6",
     "aiosmtplib": "^3.0.0"
   }
+
 }
