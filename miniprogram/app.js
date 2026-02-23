@@ -2,7 +2,7 @@ App({
   globalData: {
     userInfo: null,
     token: null,
-    baseUrl: 'https://your-vercel-deployment-url.vercel.app/api'
+    baseUrl: 'https://love-app-rouge.vercel.app/api'
   },
   
   onLaunch() {
@@ -79,4 +79,5 @@ App({
       });
     });
   }
+
 })
